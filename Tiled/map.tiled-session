@@ -1,0 +1,76 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "assets/Tiled/habitacion.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "assets/Tiled",
+        "assets"
+    ],
+    "exportAsImage.useCurrentScale": true,
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "Interiors_free_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Room_Builder_free_32x32.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Tileset_32x32_3.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assets/Tiled/Pellet Town.tmx": {
+            "scale": 0.887797619047619,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 420.1407978545089,
+                "y": 240.48273550117332
+            }
+        },
+        "assets/Tiled/collisionTileset.tsx": {
+            "scaleInDock": 1
+        },
+        "assets/Tiled/habitacion.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 296.3333333333333,
+                "y": 247.33333333333331
+            }
+        },
+        "assets/Tiled/pokemonStyleGameTileset.tsx": {
+            "scaleInDock": 1
+        },
+        "collision.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/home/happyrooster/Desktop/Portfolio/game-portfolio/data",
+    "last.imagePath": "/home/happyrooster/Desktop/Portfolio/game-portfolio/Tiled/assets/Tiled",
+    "map.height": 10,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 10,
+    "openFiles": [
+        "Interiors_free_32x32.tsx",
+        "Room_Builder_free_32x32.tsx",
+        "Tileset_32x32_3.tsx",
+        "assets/Tiled/habitacion.tmx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "Interiors_free_32x32.tsx",
+        "Room_Builder_free_32x32.tsx",
+        "Tileset_32x32_3.tsx",
+        "assets/Tiled/habitacion.tmx",
+        "collision.tsx",
+        "assets/Tiled/Pellet Town.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
