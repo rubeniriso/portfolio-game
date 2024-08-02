@@ -39,8 +39,8 @@
             "scale": 1.5,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 296.3333333333333,
-                "y": 247.33333333333331
+                "x": 161.3333333333333,
+                "y": 369.66666666666663
             }
         },
         "assets/Tiled/pokemonStyleGameTileset.tsx": {
@@ -51,7 +51,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "/home/happyrooster/Desktop/Portfolio/game-portfolio/data",
+    "last.exportedFilePath": "/home/happyrooster/Desktop/Portfolio/game-portfolio/Tiled/assets/Tiled",
     "last.imagePath": "/home/happyrooster/Desktop/Portfolio/game-portfolio/Tiled/assets/Tiled",
     "map.height": 10,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
