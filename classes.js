@@ -18,7 +18,24 @@ class Interactable extends Boundary {
         super({position: position, zoom: zoom, color: color});
     }
 }
-
+class DialogModal {
+    constructor({text, image}){
+        this.text = text
+        this.image = image
+        this.active = false
+    }
+    draw(){
+        if (this.active) {
+            c.fillStyle = 'white';
+            c.fillRect(0, window.innerHeight - window.innerHeight / 3, window.innerWidth, window.innerHeight / 2);
+            c.fillStyle = "black";
+            c.font = "bold 20px Arial";
+            c.textAlign = 'middle';
+            c.textBaseline = 'left';
+            c.fillText(this.text, 17, window.innerHeight - window.innerHeight / 3 + 30);
+        }
+    }
+}
 class Sprite {
     constructor({position, velocity, image, frames = {max: 1}, sprites, active = true}) {
         this.position = position

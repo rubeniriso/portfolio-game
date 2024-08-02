@@ -38,9 +38,12 @@ window.addEventListener('keydown', (e) => {
             lastKey = 'd'
             keys.d.pressed = true
             break
-        case 'space':
+        case ' ':
             e.preventDefault()
-            keys.space.pressed = true
+            if (interactButton.active) {
+                dialogModal.text = dialogues[currentDialog]
+                dialogModal.active = true
+            }
             break
     }
 })
@@ -60,9 +63,6 @@ window.addEventListener('keyup', (e) => {
             break
         case 'd':
             keys.d.pressed = false
-            break
-        case 'space':
-            keys.space.pressed = false
             break
     }
 })

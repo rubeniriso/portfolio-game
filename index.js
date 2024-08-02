@@ -1,11 +1,11 @@
 const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const c = canvas.getContext('2d')   
 canvas.style = "background-color: black"
-canvas.width = 1600
-canvas.height = 700
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 const offset = {
-    x: -680,
-    y: -550
+    x: -window.innerWidth/2,
+    y: -window.innerHeight/2
 }
 const speed = 6
 const playerDownImage = new Image()
@@ -22,16 +22,12 @@ playerRightImage.src = './img/playerRight32.png'
 
 const interactButtonImage = new Image()
 interactButtonImage.src = './img/interact.png'
-interactButtonImage.width = interactButtonImage.naturalWidth * 2
-interactButtonImage.height = interactButtonImage.naturalHeight * 2
-
 
 const fireplaceMap = []
 for (let i = 0; i < fireplaceArray.length; i += 36){
     fireplaceMap.push(fireplaceArray.slice(i, 36 + i))
 }
 let currentDialog = ''
-
 const fireplace = []
 fireplaceMap.forEach((row, i) => {
     row.forEach((col, j) => {
@@ -81,6 +77,9 @@ function rectangularCollision({rectangle1, rectangle2}){
         rectangle1.position.y + rectangle1.height >= rectangle2.position.y 
     )
 }
+const dialogModal = new DialogModal({
+    text: 'henlo'
+})
 const player = new Sprite({
     position: {
         x: canvas.width / 2 - 384 / 4 / 2, 
@@ -139,10 +138,11 @@ function animate() {
     fireplace.forEach((square) => {
         square.draw()
     })
+    dialogModal.draw()
     interactButton.draw()
     let moving = true
     player.moving = false
-    console.log(currentDialog);
+    let isInFireplace = false
     for (let i = 0; i < fireplace.length; i++){
         const fireplaceSquare = fireplace[i]
         if (
@@ -154,14 +154,19 @@ function animate() {
                 }}
             })
         ){
-            currentDialog = dialogues.fireplace
-            interactButton.active = true
+            
+            isInFireplace = true
             break
         }
-        else {
-            interactButton.active = false
-        }
     }   
+    if (isInFireplace) {
+        dialogModal.text = dialogues['fireplace']
+        interactButton.active = true
+    } else {
+        dialogModal.text = ''
+        interactButton.active = false
+        dialogModal.active = false
+    }
     if (keys.w.pressed && lastKey === 'w'){
         for (let i = 0; i < boundaries.length; i++){
             player.moving = true
