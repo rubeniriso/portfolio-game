@@ -4,7 +4,8 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
-    />
+      />
+      <link rel="stylesheet" type="text/css" href="styles.css"/>
     <style>
       * {
         font-family: 'Press Start 2P', cursive;
@@ -29,15 +30,31 @@
       button:hover {
         background-color: #ddd;
       }
+      canvas{
+        display: block;
+      }
     </style>
   </head>
 
- <canvas></canvas>
+  <canvas></canvas>
+
+  <div id="socials" style="display: none; justify-content: space-between; align-items: center;
+  position: absolute; top: 0; height: auto; width: auto; gap: 40px">
+  <a id="linkedin" target="_blank" href="https://linkedin.com/in/rubeniriso">
+    <img src="./assets/img/misc/linkedin.png" alt="Description of Image" width="150" height="150">
+  </a>
+  <a id="github" target="_blank" href="https://github.com/rubeniriso">
+    <img src="./assets/img/misc/github.png" alt="Description of Image" width="150" height="150">
+  </a>
+ </div>
  <script src="data/collisions.js"></script>
  <script src="data/dialogues.js"></script>
  <script src="data/interactables/fireplace.js"></script>
+ <script src="data/interactables/desk.js"></script>
  <script src="classes.js"></script>
  <script src="keybinds.js"></script>
+ <script src="utils.js"></script>
+ <script src="scenes/interactableScene.js"></script>
  <script src="index.js"></script>
   
 

@@ -1,3 +1,3 @@
 const dialogues = {
-    'fireplace': 'Just a cozy fireplace, stay awhile... traveller.',
+    'fireplace': 'Just a cozy fireplace. Feel free to stay awhile :)',
 }

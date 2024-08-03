@@ -3,15 +3,27 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "assets/Tiled/habitacion.tmx",
+    "activeFile": "collision.tsx",
     "expandedProjectPaths": [
+        "assets",
         ".",
-        "assets/Tiled",
-        "assets"
+        "assets/Tiled"
     ],
     "exportAsImage.useCurrentScale": true,
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "C:/Users/ruben/OneDrive/Escritorio/Portfolio/portfolio-game/Interiors_free_32x32.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ruben/OneDrive/Escritorio/Portfolio/portfolio-game/Room_Builder_free_32x32.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ruben/OneDrive/Escritorio/Portfolio/portfolio-game/Tileset_32x32_3.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ruben/OneDrive/Escritorio/Portfolio/portfolio-game/collision.tsx": {
+            "scaleInDock": 1
+        },
         "Interiors_free_32x32.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -46,30 +58,38 @@
         "assets/Tiled/pokemonStyleGameTileset.tsx": {
             "scaleInDock": 1
         },
+        "assets/habitacion.json": {
+            "scale": 0.22265625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -655.719298245614,
+                "y": 1152
+            }
+        },
         "collision.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "/home/happyrooster/Desktop/Portfolio/game-portfolio/Tiled/assets/Tiled",
-    "last.imagePath": "/home/happyrooster/Desktop/Portfolio/game-portfolio/Tiled/assets/Tiled",
+    "last.exportedFilePath": "C:/Users/ruben/OneDrive/Escritorio/Portfolio/portfolio-game/Tiled/assets/Tiled",
+    "last.externalTilesetPath": "C:/Users/ruben/OneDrive/Escritorio/Portfolio/portfolio-game/Tiled",
+    "last.imagePath": "C:/Users/ruben/OneDrive/Escritorio/Portfolio/portfolio-game/Tiled/assets",
     "map.height": 10,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.width": 10,
     "openFiles": [
-        "Interiors_free_32x32.tsx",
-        "Room_Builder_free_32x32.tsx",
-        "Tileset_32x32_3.tsx",
-        "assets/Tiled/habitacion.tmx"
+        "assets/habitacion.json",
+        "collision.tsx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
-        "Interiors_free_32x32.tsx",
-        "Room_Builder_free_32x32.tsx",
-        "Tileset_32x32_3.tsx",
-        "assets/Tiled/habitacion.tmx",
+        "assets/habitacion.json",
         "collision.tsx",
+        "Tileset_32x32_3.tsx",
+        "Room_Builder_free_32x32.tsx",
+        "Interiors_free_32x32.tsx",
+        "assets/Tiled/habitacion.tmx",
         "assets/Tiled/Pellet Town.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"

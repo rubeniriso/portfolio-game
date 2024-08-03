@@ -13,6 +13,7 @@ class Boundary {
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
+
 class Interactable extends Boundary {
     constructor({position, zoom, color}) {
         super({position: position, zoom: zoom, color: color});
@@ -29,7 +30,7 @@ class DialogModal {
             c.fillStyle = 'white';
             c.fillRect(0, window.innerHeight - window.innerHeight / 3, window.innerWidth, window.innerHeight / 2);
             c.fillStyle = "black";
-            c.font = "bold 20px Arial";
+            c.font = "20px 'Press Start 2P'";
             c.textAlign = 'middle';
             c.textBaseline = 'left';
             c.fillText(this.text, 17, window.innerHeight - window.innerHeight / 3 + 30);
@@ -77,3 +78,20 @@ class Sprite {
     }
 }
 
+class Scene {
+    constructor(bgImage) {
+        this.animationId = 0;
+        this.background = new Sprite({
+            position: {
+                x: 0,
+                y: 0,
+            },
+            image: bgImage
+        });
+        this.active = false;
+    }
+    draw() {
+        if (!this.active) return;
+        c.drawImage(this.background.image, (getWidth() - this.background.image.width)/2, 0);
+    }
+}

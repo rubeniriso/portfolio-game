@@ -21,6 +21,7 @@ const keys = {
 }
 
 window.addEventListener('keydown', (e) => {
+    console.log(e.key);
     switch (e.key) {
         case 'w':
             lastKey = 'w'
@@ -41,17 +42,34 @@ window.addEventListener('keydown', (e) => {
         case ' ':
             e.preventDefault()
             if (interactButton.active) {
-                dialogModal.text = dialogues[currentDialog]
-                dialogModal.active = true
-            }
+                if (isDialogActive) {
+                    dialogModal.active = !dialogModal.active
+                }
+                if (isInDesk && !isInteractableSceneActive) {
+                    isInteractableSceneActive = true
+                    window.cancelAnimationFrame(scene.animationId)
+                    animateInteractableScene(computerScene)  
+                } else if (isInDesk && isInteractableSceneActive){
+                    window.cancelAnimationFrame(scene.animationId)
+                    isInteractableSceneActive = false
+                    scene.animationId = animate()
+                }
+            } 
+            break
+        case 'Escape':
+            e.preventDefault()
+            if (interactButton.active) {
+                if (isInDesk && isInteractableSceneActive){
+                    window.cancelAnimationFrame(scene.animationId)
+                    isInteractableSceneActive = false
+                    scene.animationId = animate()
+                }
+            } 
             break
     }
 })
 window.addEventListener('keyup', (e) => {
     switch (e.key) {
-        case 'Shift':
-            keys.shift.pressed = false
-            break
         case 'w':
             keys.w.pressed = false
             break

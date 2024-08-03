@@ -1,33 +1,35 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')   
 canvas.style = "background-color: black"
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+canvas.width = getWidth()-30
+canvas.height = getHeight()-16
 const offset = {
-    x: -window.innerWidth/2,
-    y: -window.innerHeight/2
+    x: -canvas.width/2,
+    y: -canvas.height/2
 }
+
+var socials = document.getElementById('socials')
+
 const speed = 6
 const playerDownImage = new Image()
-playerDownImage.src = './img/playerDown32.png'
+playerDownImage.src = './assets/img/playerDown32.png'
 
 const playerUpImage = new Image()
-playerUpImage.src = './img/playerUp32.png'
+playerUpImage.src = './assets/img/playerUp32.png'
 
 const playerLeftImage = new Image()
-playerLeftImage.src = './img/playerLeft32.png'
+playerLeftImage.src = './assets/img/playerLeft32.png'
 
 const playerRightImage = new Image()
-playerRightImage.src = './img/playerRight32.png'
+playerRightImage.src = './assets/img/playerRight32.png'
 
 const interactButtonImage = new Image()
-interactButtonImage.src = './img/interact.png'
+interactButtonImage.src = './assets/img/interact.png'
 
 const fireplaceMap = []
 for (let i = 0; i < fireplaceArray.length; i += 36){
     fireplaceMap.push(fireplaceArray.slice(i, 36 + i))
 }
-let currentDialog = ''
 const fireplace = []
 fireplaceMap.forEach((row, i) => {
     row.forEach((col, j) => {
@@ -39,12 +41,35 @@ fireplaceMap.forEach((row, i) => {
                         y: i * Boundary.height + offset.y,
                     },
                     zoom: zoom,
-                    color: 'rgba(0, 255, 0)'
+                    color: 'rgba(0, 255, 0, 0)'
                 })
             )
         }
     })
 })
+
+const deskMap = []
+for (let i = 0; i < deskArray.length; i += 36){
+    deskMap.push(deskArray.slice(i, 36+i))
+}
+const desk = []
+deskMap.forEach((row, i) => {
+    row.forEach((col, j) => {
+        if (col === 1818) {
+            desk.push(
+                new Interactable({
+                    position: {
+                        x: j * Boundary.width + offset.x,
+                        y: i * Boundary.height + offset.y,
+                    },
+                    zoom: zoom,
+                    color: 'rgba(0, 255, 0, 0)'
+                })
+            )
+        }
+    })
+})
+
 
 const collisionsMap = []
 for (let i = 0; i < collisions.length; i += 36){
@@ -77,9 +102,8 @@ function rectangularCollision({rectangle1, rectangle2}){
         rectangle1.position.y + rectangle1.height >= rectangle2.position.y 
     )
 }
-const dialogModal = new DialogModal({
-    text: 'henlo'
-})
+const dialogModal = new DialogModal({})
+
 const player = new Sprite({
     position: {
         x: canvas.width / 2 - 384 / 4 / 2, 
@@ -106,8 +130,9 @@ const interactButton = new Sprite({
     active: false
 })
 
+
 const map = new Image()
-map.src = './img/maps/habitacion.png'
+map.src = './assets/img/maps/habitacion.png'
 const background = new Sprite({
     position: {
         x: offset.x,
@@ -117,7 +142,7 @@ const background = new Sprite({
 })
 
 const foregroundImage = new Image()
-foregroundImage.src = './img/maps/foreground.png'
+foregroundImage.src = './assets/img/maps/foreground.png'
 const foreground = new Sprite({
     position: {
         x: offset.x,
@@ -125,10 +150,18 @@ const foreground = new Sprite({
     },
     image: foregroundImage
 })
-const movables = [background, foreground, ...fireplace, ...boundaries]
+const sceneImage = new Image()
+const scene = new Scene(sceneImage)
+const movables = [background, foreground, ...fireplace, ...desk, ...boundaries]
+let isInteractableSceneActive = false
+let isInDesk = false
 let lastKey = ''
+let isDialogActive = false
 function animate() {
-    window.requestAnimationFrame(animate)
+    socials.style.display = 'none'
+    scene.animationId = window.requestAnimationFrame(animate)
+    if (isInteractableSceneActive) return
+    
     background.draw()
     boundaries.forEach((boundary) => {
         boundary.draw()
@@ -138,10 +171,12 @@ function animate() {
     fireplace.forEach((square) => {
         square.draw()
     })
+    desk.forEach((square) => {
+        square.draw()
+    })
     dialogModal.draw()
     interactButton.draw()
-    let moving = true
-    player.moving = false
+    
     let isInFireplace = false
     for (let i = 0; i < fireplace.length; i++){
         const fireplaceSquare = fireplace[i]
@@ -161,12 +196,42 @@ function animate() {
     }   
     if (isInFireplace) {
         dialogModal.text = dialogues['fireplace']
-        interactButton.active = true
+        isDialogActive = true
     } else {
         dialogModal.text = ''
+    }
+    isInDesk = false
+    for (let i = 0; i < desk.length; i++){
+        const deskSquare = desk[i]
+        if (
+            rectangularCollision({
+                rectangle1: player,
+                rectangle2: {...deskSquare, position: {
+                    x: deskSquare.position.x,
+                    y: deskSquare.position.y
+                }}
+            })
+        ){
+            isInDesk = true
+            break
+        }
+    } 
+
+    if (isInDesk || isInFireplace) {
+        interactButton.active = true
+    } else {
         interactButton.active = false
         dialogModal.active = false
+        isDialogActive = false
     }
+    movingFunctions()
+}
+
+
+
+async function movingFunctions () {
+    let moving = true
+    player.moving = false
     if (keys.w.pressed && lastKey === 'w'){
         for (let i = 0; i < boundaries.length; i++){
             player.moving = true
@@ -264,5 +329,6 @@ function animate() {
         }
     }
 }
+
 animate()
 
