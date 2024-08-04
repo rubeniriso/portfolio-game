@@ -21,7 +21,6 @@ const keys = {
 }
 
 window.addEventListener('keydown', (e) => {
-    console.log(e.key);
     switch (e.key) {
         case 'w':
             lastKey = 'w'
@@ -66,6 +65,17 @@ window.addEventListener('keydown', (e) => {
                 }
             } 
             break
+        case 'Tab':
+            if (isInDesk && isInteractableSceneActive) {
+                let focus = document.activeElement.id
+                switch (focus) {
+                    case 'github':
+                        e.preventDefault()
+                        console.log('changing to linkedin');
+                        document.getElementById('linkedin').focus();
+                        break
+                }
+            }
     }
 })
 window.addEventListener('keyup', (e) => {

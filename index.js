@@ -1,8 +1,10 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')   
 canvas.style = "background-color: black"
-canvas.width = getWidth()-30
+canvas.width = getWidth()-10
 canvas.height = getHeight()-16
+const sceneImage = new Image('./assets/img/maps/habitacion.png')
+const scene = new Scene(sceneImage)
 const offset = {
     x: -canvas.width/2,
     y: -canvas.height/2
@@ -87,7 +89,7 @@ collisionsMap.forEach((row, i) => {
                         y: i * Boundary.height + offset.y,
                     },
                     zoom: zoom,
-                    color: 'rgba(255, 0, 0, 0)'
+                    color: 'rgba(255, 0, 0, 0.5)'
                 })
             )
         }
@@ -150,8 +152,7 @@ const foreground = new Sprite({
     },
     image: foregroundImage
 })
-const sceneImage = new Image()
-const scene = new Scene(sceneImage)
+
 const movables = [background, foreground, ...fireplace, ...desk, ...boundaries]
 let isInteractableSceneActive = false
 let isInDesk = false

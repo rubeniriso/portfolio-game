@@ -92,6 +92,6 @@ class Scene {
     }
     draw() {
         if (!this.active) return;
-        c.drawImage(this.background.image, (getWidth() - this.background.image.width)/2, 0);
+        c.drawImage(this.background.image, 0, 0, canvas.width, canvas.height);
     }
 }
